@@ -55,22 +55,108 @@ const users = [
 const now = new Date();
 const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
+console.log(oneWeekAgo)
+// output
+// 2024-05-10T09:34:53.240Z
 
 const activeUsers = users.filter(user =>
   user.posts.some(post => new Date(post.timestamp) > oneWeekAgo)
 );
 
-// console.log(activeUsers);
+console.log(activeUsers);
 
+//output
+// [
+//   {
+//     id: 1,
+//     name: 'John',
+//     location: 'New York',
+//     friends: [ 2, 3, 4 ],
+//     posts: [ [Object], [Object], [Object] ]
+//   },
+//   {
+//     id: 2,
+//     name: 'Alice',
+//     location: 'San Francisco',
+//     friends: [ 1, 3 ],
+//     posts: [ [Object], [Object] ]
+//   },
+//   {
+//     id: 3,
+//     name: 'Emily',
+//     location: 'Los Angeles',
+//     friends: [ 1, 2, 4 ],
+//     posts: [ [Object], [Object] ]
+//   },
+//   {
+//     id: 4,
+//     name: 'David',
+//     location: 'Chicago',
+//     friends: [ 2 ],
+//     posts: [ [Object], [Object] ]
+//   },
+//   {
+//     id: 5,
+//     name: 'Sarah',
+//     location: 'Seattle',
+//     friends: [ 3, 1 ],
+//     posts: [ [Object], [Object] ]
+//   }
+// ]
 //filtering the popular posts of the active users.
-const popularPosts = activeUsers.map(user =>
-    user.posts.filter(post => post.likes >= 10)
-  );
-  
-  console.log(popularPosts);
+const popularPosts = activeUsers.flatMap(user =>
+  user.posts.filter(post => post.likes >= 10)
+);
 
-const totalLikes = popularPosts.reduce((accumulator, post) => accumulator + post.likes, 0);
-const averageLikesPerUser = totalLikes / activeUsers.length;
+console.log(popularPosts);
+//ouput
+// [
+//   {
+//     content: 'Great day at Central Park!',
+//     timestamp: '2024-05-10T12:00:00',
+//     likes: 15
+//   },
+//   {
+//     content: 'Visited the Statue of Liberty today!',
+//     timestamp: '2024-05-05T17:45:00',
+//     likes: 20
+//   },
+//   {
+//     content: 'Hiking in the Bay Area!',
+//     timestamp: '2024-05-12T14:20:00',
+//     likes: 12
+//   },
+//   {
+//     content: 'Beach day in LA!',
+//     timestamp: '2024-05-08T09:45:00',
+//     likes: 25
+//   },
+//   {
+//     content: 'Deep dish pizza is the best!',
+//     timestamp: '2024-05-11T10:30:00',
+//     likes: 18
+//   },
+//   {
+//     content: 'Exploring the Olympic National Park!',
+//     timestamp: '2024-05-14T07:00:00',
+//     likes: 11
+//   }
+// ]
+const totalLike = popularPosts.reduce((accumulator, post) => accumulator + post.likes, 0);
+const averageLikesPerUser = totalLike / activeUsers.length;
 
 console.log(averageLikesPerUser);
+
+//output
+//20.2
+
+const totalLikes = popularPosts.reduce((total, post) => total + post.likes, 0);
+
+//Calculate the average likes per user
+const likesPerUser = totalLikes / users.length;
+
+console.log(averageLikesPerUser);
+
+//output
+//20.2
 
