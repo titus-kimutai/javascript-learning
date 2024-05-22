@@ -60,19 +60,21 @@
 
     <script>
       function calculateTotal() {
-       //here is where we get the values of price and quantity
-        const price = document.getElementById("price").value
-        const quantity = document.getElementById("quantity").value
+        //here is where we get the values of price and quantity
+        const price = document.querySelector("#price").value;
+        const quantity = document.querySelector("#quantity").value;
 
         const total = price * quantity;
 
-        
-        document.getElementById("total").innerText = `${total}`;
+        document.querySelector("#total").innerText = `${total}`;
       }
 
-      document.getElementById("price").addEventListener("input", calculateTotal)
-      document.getElementById("quantity").addEventListener("input", calculateTotal)
-
+      document
+        .querySelector("#price")
+        .addEventListener("input", calculateTotal);
+      document
+        .querySelector("#quantity")
+        .addEventListener("input", calculateTotal);
 
       calculateTotal();
     </script>
