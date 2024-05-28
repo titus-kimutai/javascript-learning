@@ -1,5 +1,5 @@
 const accessToken =
-  "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";
+  "";//use your access tokens
 
 const header = document.createElement("h1");
 header.textContent = "GITHUB SEARCH TOOLS";
