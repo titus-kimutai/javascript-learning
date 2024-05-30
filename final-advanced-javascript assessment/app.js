@@ -1,43 +1,51 @@
-const addedDataJSON = [];
+const dataProducts = [];
 
-function addDataToJSON(Data) {
-  addedDataJSON.push(...Data);
+async function addDataFunc(product) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      dataProducts.push(product);
+      console.log(`Product added:`, product);
+      resolve();
+    }, 0);
+  });
 }
-const Data = [
-  {
-    id: 1,
-    imageUrl:
-      "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    title: "Product 1",
-    price: 50,
-    date: "20-5-2024",
-    location: "Nairobi",
-    company: "Lixnet Technologies",
-  },
-  {
-    id: 2,
-    imageUrl:
-      "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    title: "Product 2",
-    price: 75,
-    date: "20-5-2024",
-    location: "Nairobi",
-    company: "TecnoLake Technologies",
-  },
-];
 
-addDataToJSON(Data);
-const cart = [];
+async function addProducts() {
+  try {
+    await addDataFunc({
+      id: 1,
+      imageUrl:
+        "https://plus.unsplash.com/premium_photo-1661602441396-67b89b6ac4d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      title: "Summer Beach Party",
+      price: 15,
+      date: "July 3, 2022",
+      location: "Venice Beach, Los Angeles",
+      company: "LA Beach Parties",
+    });
+    await addDataFunc({
+      id: 2,
+      imageUrl:
+        "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      title: "Angular Nation Expo",
+      price: 35,
+      date: "October 1-3, 2022",
+      location: "Google Hall, San Francisco",
+      company: "ArtExpo NY",
+    });
+
+    console.log("All products added:", dataProducts);
+    populateProducts();
+  } catch (error) {
+    console.error("Error adding products:", error);
+  }
+}
 
 function populateProducts() {
   const productContainer = document.getElementById("product-container");
   productContainer.innerHTML = "";
-  productContainer.className = "main"
+  productContainer.className = "main";
 
-  addedDataJSON.map((product) => {
-    // const container = document.createElement("main");
-    // product.appendChild(container);
-
+  dataProducts.map((product) => {
     const productCard = document.createElement("div");
     productCard.className = "product-card";
 
@@ -74,6 +82,8 @@ function populateProducts() {
     productContainer.appendChild(productCard);
   });
 }
+
+const cart = [];
 
 function addToCart(product) {
   const cartItem = cart.find((item) => item.id === product.id);
@@ -159,5 +169,4 @@ function updateCartUI() {
     cartContainer.appendChild(cartItemElement);
   });
 }
-
-populateProducts();
+addProducts();

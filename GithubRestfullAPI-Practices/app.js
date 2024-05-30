@@ -1,5 +1,4 @@
-const accessToken =
-  "";//use your access tokens
+const accessToken = "";
 
 const header = document.createElement("h1");
 header.textContent = "GITHUB SEARCH TOOLS";
@@ -30,42 +29,40 @@ btn.addEventListener("click", async () => {
     }
 
     const data = await response.json();
-    
 
-    const mycontainer = document.createElement('main')
-    document.body.appendChild(mycontainer)
+    const mycontainer = document.createElement("main");
+    document.body.appendChild(mycontainer);
 
-    const container = document.createElement('div')
-    mycontainer.appendChild(container)
+    const container = document.createElement("div");
+    mycontainer.appendChild(container);
 
-    const imageUrl = document.createElement('img');
-    imageUrl.src = data.avatar_url
-    container.appendChild(imageUrl)
+    const imageUrl = document.createElement("img");
+    imageUrl.src = data.avatar_url;
+    container.appendChild(imageUrl);
 
-    const myarticle = document.createElement('article')
-    mycontainer.appendChild(myarticle)
+    const myarticle = document.createElement("article");
+    mycontainer.appendChild(myarticle);
 
     const name = document.createElement("p");
     name.style.fontSize = "30px";
     myarticle.appendChild(name);
     name.textContent = data.name;
 
-    const repository = document.createElement('p')
-    repository.textContent =` ${data.public_repos} Repos`
-    myarticle.appendChild(repository)
+    const repository = document.createElement("p");
+    repository.textContent = ` ${data.public_repos} Repos`;
+    myarticle.appendChild(repository);
 
-    const user = document.createElement('p')
-    user.textContent = data.type
-    myarticle.appendChild(user)
+    const user = document.createElement("p");
+    user.textContent = data.type;
+    myarticle.appendChild(user);
 
-    const location = document.createElement('p')
-    location.textContent = data.location
-    myarticle.appendChild(location)
+    const location = document.createElement("p");
+    location.textContent = data.location;
+    myarticle.appendChild(location);
 
-    const description = document.createElement('p')
-    description.textContent = data.bio
-    myarticle.appendChild(description)
-
+    const description = document.createElement("p");
+    description.textContent = data.bio;
+    myarticle.appendChild(description);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
