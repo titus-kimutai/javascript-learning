@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('./assets/sky.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.search-bar {
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+#city-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 1px solid  gray;
+    border-radius: 20px;
+}
+
+#weather-container {
+    margin-top: 20px;
+    width: 80%;
+    height: 300px;
+    background: rgba(129, 143, 221, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.weather-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-details {
+    margin-left: 20px;
+    text-align: left;
+}
+
+.forecast-box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: rgba(164, 170, 206, 0.8); 
+}
+
+.forecast-day {
+    text-align: center;
+}
+
+.forecast-day img {
+    width: 50px;
+    height: 50px;
+}
